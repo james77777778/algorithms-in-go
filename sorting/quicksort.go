@@ -10,9 +10,9 @@ func RandomChoosePivot(n int) int {
 	return randIdx
 }
 
-func Partition(A *[]int, n, pIdx int) int {
+func Partition(A *[]int, n, randomIdx int) int {
 	// move p to the head
-	(*A)[pIdx], (*A)[0] = (*A)[0], (*A)[pIdx]
+	(*A)[randomIdx], (*A)[0] = (*A)[0], (*A)[randomIdx]
 
 	// init
 	i, j := 1, 1
@@ -37,12 +37,12 @@ func QuickSort(A []int, n int) []int {
 		return A
 	}
 
-	pIdx := RandomChoosePivot(n)
+	randomIdx := RandomChoosePivot(n)
 
-	medianIdx := Partition(&A, n, pIdx)
+	pivotIdx := Partition(&A, n, randomIdx)
 
-	QuickSort(A[:medianIdx], len(A[:medianIdx]))
-	QuickSort(A[medianIdx + 1:], len(A[medianIdx + 1:]))
+	QuickSort(A[:pivotIdx], len(A[:pivotIdx]))
+	QuickSort(A[pivotIdx + 1:], len(A[pivotIdx + 1:]))
 
 	return A
 }
