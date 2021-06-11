@@ -2,7 +2,22 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"os"
+	"io"
+	"bufio"
+	"strconv"
 	"math/rand"
+	"time"
+)
+
+var Count int
+
+const (
+	first = iota
+	last = iota
+	medianOf3 = iota
+	random = iota
 )
 
 func RandomChoosePivot(n int) int {
@@ -24,6 +39,9 @@ func Partition(A *[]int, n, randomIdx int) int {
 			i++
 		}
 		j++
+
+		// count comparison
+		Count++
 	}
 
 	// move p to i-1 idx
@@ -32,25 +50,138 @@ func Partition(A *[]int, n, randomIdx int) int {
 	return i-1
 }
 
-func QuickSort(A []int, n int) []int {
+func QuickSort(A []int, n int, mode int) []int {
 	if n < 2 {
 		return A
 	}
 
-	randomIdx := RandomChoosePivot(n)
+	idx := 0
+	if mode == first {
+		idx = 0
+	} else if mode == last {
+		idx = n - 1
+	} else if mode == medianOf3 {
+		medianIdx := MedianOf3(A[0], A[n - 1], A[n / 2])
+		if medianIdx == 0 {
+			idx = 0
+		} else if medianIdx == 1 {
+			idx = n - 1
+		} else {
+			idx = n / 2
+		}
+	} else {
+		idx = RandomChoosePivot(n)
+	}
 
-	pivotIdx := Partition(&A, n, randomIdx)
+	pivotIdx := Partition(&A, n, idx)
 
-	QuickSort(A[:pivotIdx], len(A[:pivotIdx]))
-	QuickSort(A[pivotIdx + 1:], len(A[pivotIdx + 1:]))
+	QuickSort(A[:pivotIdx], len(A[:pivotIdx]), mode)
+	QuickSort(A[pivotIdx + 1:], len(A[pivotIdx + 1:]), mode)
 
 	return A
 }
 
+func MedianOf3(a, b, c int) int {
+	if (a > b) != (a > c) {
+		return 0
+	} else if (b < a) != (b < c) {
+		return 1
+	} else {
+		return 2
+	}
+}
+
+func ReadInts(r io.Reader) ([]int, error) {
+	scanner := bufio.NewScanner(r)
+	scanner.Split(bufio.ScanWords)
+	var result []int
+	for scanner.Scan() {
+		x, err := strconv.Atoi(scanner.Text())
+		if err != nil {
+			return result, err
+		}
+		result = append(result, x)
+	}
+	return result, scanner.Err()
+}
+
 func main() {
-	A := []int{3, 8, 2, 5, 1, 4, 7, 6}
+	rand.Seed(time.Now().UTC().UnixNano())
+	// testcase 1
+	fmt.Println("Testcase 1:")
+	f, err := os.Open("sorting/testcase/problem5.6test1.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err := ReadInts(f)
 
-	sortedA := QuickSort(A, len(A))
+	Count = 0
+	QuickSort(A, len(A), first)
+	fmt.Printf("%v comparisons\n", Count)
 
-	fmt.Println(sortedA)
+	Count = 0
+	f, err = os.Open("sorting/testcase/problem5.6test1.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err = ReadInts(f)
+	QuickSort(A, len(A), last)
+	fmt.Printf("%v comparisons\n", Count)
+
+	Count = 0
+	f, err = os.Open("sorting/testcase/problem5.6test1.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err = ReadInts(f)
+	QuickSort(A, len(A), medianOf3)
+	fmt.Printf("%v comparisons\n", Count)
+
+	Count = 0
+	f, err = os.Open("sorting/testcase/problem5.6test1.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err = ReadInts(f)
+	QuickSort(A, len(A), random)
+	fmt.Printf("%v comparisons\n", Count)
+
+	// testcase 2
+	fmt.Println("\nTestcase 2:")
+	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err = ReadInts(f)
+
+	Count = 0
+	QuickSort(A, len(A), first)
+	fmt.Printf("%v comparisons\n", Count)
+
+	Count = 0
+	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err = ReadInts(f)
+	QuickSort(A, len(A), last)
+	fmt.Printf("%v comparisons\n", Count)
+
+	Count = 0
+	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err = ReadInts(f)
+	QuickSort(A, len(A), medianOf3)
+	fmt.Printf("%v comparisons\n", Count)
+
+	Count = 0
+	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	A, err = ReadInts(f)
+	QuickSort(A, len(A), random)
+	fmt.Printf("%v comparisons\n", Count)
 }
