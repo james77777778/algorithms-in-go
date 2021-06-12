@@ -39,3 +39,10 @@ All algorithms are Implemented in GO.
     5469
     4715
     ```
+- Deterministic Selection
+    `go run randomselection/deterministicselection.go`  
+    shows  
+    ```bash
+    5469
+    4715
+    ```
