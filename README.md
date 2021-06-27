@@ -46,3 +46,15 @@ All algorithms are Implemented in GO.
     5469
     4715
     ```
+
+### Strong Connected Components
+- Strong Connected Components
+    `go run scc/scc.go`  
+    shows top 5 SCC size  
+    ```bash
+    [3 3 3 0 0]
+    [3 3 2 0 0]
+    [3 3 1 1 0]
+    [7 1 0 0 0]
+    [6 3 2 1 0]
+    ```
