@@ -3,19 +3,19 @@
 A personal learning record.  
 All algorithms are Implemented in GO.
 
-## Resources
+## Resources & Test Cases
 [http://www.algorithmsilluminated.org/](http://www.algorithmsilluminated.org/)
 
 ## Implemented Algorithms
 ### Divide and Conquer
 - Closest Pair of Points  
-    `go run divideconquer\closestpair.go`  
+    `go run cmd/closest_pair/closest_pair.go`  
     shows  
     `5.0990195135927845`
 
 ### Sorting
 - QuickSort (RandomPivot + In-place Partition)  
-    `go run sorting\quicksort.go`  
+    `go run cmd/sort/quick_sort.go`  
     shows  
     ```bash
     Testcase 1:
@@ -33,14 +33,14 @@ All algorithms are Implemented in GO.
 
 ### Random Selection
 - Random Selection
-    `go run randomselection/randomselection.go`  
+    `go run cmd/random_selection/random_selection.go`  
     shows  
     ```bash
     5469
     4715
     ```
 - Deterministic Selection
-    `go run randomselection/deterministicselection.go`  
+    `go run cmd/random_selection/deterministic_selection.go`  
     shows  
     ```bash
     5469
@@ -49,7 +49,7 @@ All algorithms are Implemented in GO.
 
 ### Strong Connected Components
 - Strong Connected Components
-    `go run scc/scc.go`  
+    `go run cmd/scc/scc.go`  
     shows top 5 SCC size  
     ```bash
     [3 3 3 0 0]
@@ -57,4 +57,18 @@ All algorithms are Implemented in GO.
     [3 3 1 1 0]
     [7 1 0 0 0]
     [6 3 2 1 0]
+    ```
+
+### Heap
+- Heap Operations
+    `go run cmd/test_heap/test_heap.go`
+    shows a sorted order
+    ```bash
+    1
+    3
+    4
+    5
+    7
+    10
+    100
     ```

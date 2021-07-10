@@ -109,7 +109,7 @@ func main() {
 	rand.Seed(time.Now().UTC().UnixNano())
 	// testcase 1
 	fmt.Println("Testcase 1:")
-	f, err := os.Open("sorting/testcase/problem5.6test1.txt")
+	f, err := os.Open("cmd/sort/testcase/problem5.6test1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -120,7 +120,7 @@ func main() {
 	fmt.Printf("%v comparisons\n", Count)
 
 	Count = 0
-	f, err = os.Open("sorting/testcase/problem5.6test1.txt")
+	f, err = os.Open("cmd/sort/testcase/problem5.6test1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -129,7 +129,7 @@ func main() {
 	fmt.Printf("%v comparisons\n", Count)
 
 	Count = 0
-	f, err = os.Open("sorting/testcase/problem5.6test1.txt")
+	f, err = os.Open("cmd/sort/testcase/problem5.6test1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -138,7 +138,7 @@ func main() {
 	fmt.Printf("%v comparisons\n", Count)
 
 	Count = 0
-	f, err = os.Open("sorting/testcase/problem5.6test1.txt")
+	f, err = os.Open("cmd/sort/testcase/problem5.6test1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -148,7 +148,7 @@ func main() {
 
 	// testcase 2
 	fmt.Println("\nTestcase 2:")
-	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	f, err = os.Open("cmd/sort/testcase/problem5.6test2.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -159,7 +159,7 @@ func main() {
 	fmt.Printf("%v comparisons\n", Count)
 
 	Count = 0
-	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	f, err = os.Open("cmd/sort/testcase/problem5.6test2.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -168,7 +168,7 @@ func main() {
 	fmt.Printf("%v comparisons\n", Count)
 
 	Count = 0
-	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	f, err = os.Open("cmd/sort/testcase/problem5.6test2.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -177,7 +177,7 @@ func main() {
 	fmt.Printf("%v comparisons\n", Count)
 
 	Count = 0
-	f, err = os.Open("sorting/testcase/problem5.6test2.txt")
+	f, err = os.Open("cmd/sort/testcase/problem5.6test2.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

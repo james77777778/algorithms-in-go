@@ -222,12 +222,12 @@ func computeSize(sccs [][]int) (sizes []int) {
 
 func main() {
 	// case 1
-	file, _ := os.Open("scc/testcase/problem8.10test1.txt")
+	file, _ := os.Open("cmd/scc/testcase/problem8.10test1.txt")
 	fileScanner := bufio.NewScanner(file)
 	grev, _ := ReadEdge(fileScanner, true)
 	finising := FirstDFSLoop(grev)
 
-	file, _ = os.Open("scc/testcase/problem8.10test1.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test1.txt")
 	fileScanner = bufio.NewScanner(file)
 	g, _ := ReadEdge(fileScanner, false)
 	sccs := SecondDFSLoop(g, finising)
@@ -236,12 +236,12 @@ func main() {
 	fmt.Println(sccsSizes)
 
 	// case 2
-	file, _ = os.Open("scc/testcase/problem8.10test2.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test2.txt")
 	fileScanner = bufio.NewScanner(file)
 	grev, _ = ReadEdge(fileScanner, true)
 	finising = FirstDFSLoop(grev)
 
-	file, _ = os.Open("scc/testcase/problem8.10test2.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test2.txt")
 	fileScanner = bufio.NewScanner(file)
 	g, _ = ReadEdge(fileScanner, false)
 	sccs = SecondDFSLoop(g, finising)
@@ -250,12 +250,12 @@ func main() {
 	fmt.Println(sccsSizes)
 
 	// case 3
-	file, _ = os.Open("scc/testcase/problem8.10test3.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test3.txt")
 	fileScanner = bufio.NewScanner(file)
 	grev, _ = ReadEdge(fileScanner, true)
 	finising = FirstDFSLoop(grev)
 
-	file, _ = os.Open("scc/testcase/problem8.10test3.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test3.txt")
 	fileScanner = bufio.NewScanner(file)
 	g, _ = ReadEdge(fileScanner, false)
 	sccs = SecondDFSLoop(g, finising)
@@ -264,12 +264,12 @@ func main() {
 	fmt.Println(sccsSizes)
 
 	// case 4
-	file, _ = os.Open("scc/testcase/problem8.10test4.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test4.txt")
 	fileScanner = bufio.NewScanner(file)
 	grev, _ = ReadEdge(fileScanner, true)
 	finising = FirstDFSLoop(grev)
 
-	file, _ = os.Open("scc/testcase/problem8.10test4.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test4.txt")
 	fileScanner = bufio.NewScanner(file)
 	g, _ = ReadEdge(fileScanner, false)
 	sccs = SecondDFSLoop(g, finising)
@@ -278,12 +278,12 @@ func main() {
 	fmt.Println(sccsSizes)
 
 	// case 5
-	file, _ = os.Open("scc/testcase/problem8.10test5.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test5.txt")
 	fileScanner = bufio.NewScanner(file)
 	grev, _ = ReadEdge(fileScanner, true)
 	finising = FirstDFSLoop(grev)
 
-	file, _ = os.Open("scc/testcase/problem8.10test5.txt")
+	file, _ = os.Open("cmd/scc/testcase/problem8.10test5.txt")
 	fileScanner = bufio.NewScanner(file)
 	g, _ = ReadEdge(fileScanner, false)
 	sccs = SecondDFSLoop(g, finising)
