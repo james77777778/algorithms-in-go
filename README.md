@@ -32,14 +32,14 @@ All algorithms are Implemented in GO.
     ```
 
 ### Random Selection
-- Random Selection
+- Random Selection  
     `go run cmd/random_selection/random_selection.go`  
     shows  
     ```bash
     5469
     4715
     ```
-- Deterministic Selection
+- Deterministic Selection  
     `go run cmd/random_selection/deterministic_selection.go`  
     shows  
     ```bash
@@ -48,7 +48,7 @@ All algorithms are Implemented in GO.
     ```
 
 ### Strong Connected Components
-- Strong Connected Components
+- Strong Connected Components  
     `go run cmd/scc/scc.go`  
     shows top 5 SCC size  
     ```bash
@@ -60,9 +60,9 @@ All algorithms are Implemented in GO.
     ```
 
 ### Heap
-- Heap Operations
-    `go run cmd/test_heap/test_heap.go`
-    shows a sorted order
+- Heap Operations  
+    `go run cmd/test_heap/test_heap.go`  
+    shows a sorted order  
     ```bash
     1
     3
