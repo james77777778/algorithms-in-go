@@ -120,7 +120,7 @@ func ReadInts(r io.Reader) ([]int, error) {
 func main() {
 	// testcase 1
 	i := 5 - 1
-	f, err := os.Open("cmd/random_selection/testcase/problem6.5test1.txt")
+	f, err := os.Open("cmd/deterministic_selection/testcase/problem6.5test1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -131,7 +131,7 @@ func main() {
 
 	// testcase 2
 	i = 50 - 1
-	f, err = os.Open("cmd/random_selection/testcase/problem6.5test2.txt")
+	f, err = os.Open("cmd/deterministic_selection/testcase/problem6.5test2.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

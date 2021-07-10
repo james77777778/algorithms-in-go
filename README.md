@@ -40,7 +40,7 @@ All algorithms are Implemented in GO.
     4715
     ```
 - Deterministic Selection  
-    `go run cmd/random_selection/deterministic_selection.go`  
+    `go run cmd/deterministic_selection/deterministic_selection.go`  
     shows  
     ```bash
     5469
