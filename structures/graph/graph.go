@@ -1,8 +1,9 @@
 package graph
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
+	"log"
 	"sort"
 )
 
@@ -10,15 +11,21 @@ type Node struct {
 	Id int
 }
 
+type Edge struct {
+	u, v int
+}
+
 type Graph struct {
 	Nodes []*Node
 	AdjList map[int][]int
+	Edges map[Edge]int
 }
 
 func NewGraph() *Graph {
 	return &Graph{
 		Nodes: []*Node{},
 		AdjList: map[int][]int{},
+		Edges: map[Edge]int{},
 	}
 }
 
@@ -29,6 +36,14 @@ func (g *Graph) FindNode(id int) (found bool) {
 		}
 	}
 	return false
+}
+
+func (g *Graph) FindEdgeWeight(u, v int) (weight int, err error) {
+	if weight, ok := g.Edges[Edge{u, v}]; ok {
+		return weight, nil
+	} else {
+		return 0, errors.New(fmt.Sprintf("No edge (%v, %v)", u, v))
+	}
 }
 
 func (g *Graph) AddNode(newId int) (err error) {
@@ -57,6 +72,26 @@ func (g *Graph) AddEdge(u, v int) (err error) {
 	}
 	// add the edge
 	g.AdjList[u] = append(g.AdjList[u], v)
+	g.Edges[Edge{u, v}] = 1
+
+	return nil
+}
+
+func (g *Graph) AddEdgeWithWeight(u, v, weight int) (err error) {
+	// add nodes
+	if !g.FindNode(u) {
+		g.Nodes = append(g.Nodes, &Node{
+			Id: u,
+		})
+	}
+	if !g.FindNode(v) {
+		g.Nodes = append(g.Nodes, &Node{
+			Id: v,
+		})
+	}
+	// add the edge
+	g.AdjList[u] = append(g.AdjList[u], v)
+	g.Edges[Edge{u, v}] = weight
 
 	return nil
 }
@@ -83,7 +118,11 @@ func (g *Graph) PrintAdjList() {
 		// output
 		fmt.Printf("%v->", o)
 		for i, n := range lst {
-			fmt.Printf("%v", n)
+			w, err := g.FindEdgeWeight(o, n)
+			if err != nil {
+				log.Fatal(err)
+			}
+			fmt.Printf("%v(%v)", n, w)
 			if i != len(lst) - 1 {
 				fmt.Printf("->")
 			}
