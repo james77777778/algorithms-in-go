@@ -25,4 +25,17 @@ func main() {
 		}
 		fmt.Println(min)
 	}
+
+	fmt.Println("New Insert:")
+	h.Insert(1)
+	h.Insert(10)
+	h.Insert(4)
+
+	for len := h.Len(); len > 0; len = h.Len() {
+		min, err := h.ExtractMin()
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(min)
+	}
 }

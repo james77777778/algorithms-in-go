@@ -10,98 +10,11 @@ import (
 	"strings"
 
 	"algorithms-in-go/structures/stack"
+	"algorithms-in-go/structures/graph"
 )
 
-//////////// Implement Graph
-type Node struct {
-	Id int
-}
-
-type Graph struct {
-	Nodes []*Node
-	AdjList map[int][]int
-}
-
-func NewGraph() *Graph {
-	return &Graph{
-		Nodes: []*Node{},
-		AdjList: map[int][]int{},
-	}
-}
-
-func (g *Graph) FindNode(id int) (found bool) {
-	for _, n := range g.Nodes {
-		if id == n.Id {
-			return true
-		}
-	}
-	return false
-}
-
-func (g *Graph) AddNode(newId int) (err error) {
-	// check no same id
-	if g.FindNode(newId) {
-		return errors.New(fmt.Sprintf("Can not add %v because there already has same id", newId))
-	}
-	// add the node
-	g.Nodes = append(g.Nodes, &Node{
-		Id: newId,
-	})
-	return nil
-}
-
-func (g *Graph) AddEdge(u, v int) (err error) {
-	// add nodes
-	if !g.FindNode(u) {
-		g.Nodes = append(g.Nodes, &Node{
-			Id: u,
-		})
-	}
-	if !g.FindNode(v) {
-		g.Nodes = append(g.Nodes, &Node{
-			Id: v,
-		})
-	}
-	// add the edge
-	g.AdjList[u] = append(g.AdjList[u], v)
-
-	return nil
-}
-
-func (g *Graph) GetNodes() (res []int) {
-	res = make([]int, 0)
-	for _, n := range g.Nodes {
-		res = append(res, n.Id)
-	}
-	sort.Ints(res)
-	return res
-}
-
-func (g *Graph) PrintAdjList() {
-	// get assending order
-	order := g.GetNodes()
-	// print adj list by order
-	for _, o := range order {
-		lst := g.AdjList[o]
-		// do not output if there is no node in adj list
-		if len(lst) == 0 {
-			continue
-		}
-		// output
-		fmt.Printf("%v->", o)
-		for i, n := range lst {
-			fmt.Printf("%v", n)
-			if i != len(lst) - 1 {
-				fmt.Printf("->")
-			}
-		}
-		fmt.Printf("\n")
-	}
-}
-
-////////// Utils
-func ReadEdge(scanner *bufio.Scanner, isReversed bool) (g *Graph, err error) {
-	g = NewGraph()
+func ReadEdge(scanner *bufio.Scanner, isReversed bool) (g *graph.Graph, err error) {
+	g = graph.NewGraph()
 	for scanner.Scan() {
 		line := scanner.Text()
 		lines := strings.Split(line, " ")
@@ -126,7 +39,7 @@ func ReadEdge(scanner *bufio.Scanner, isReversed bool) (g *Graph, err error) {
 }
 
 ////////// Kosaraju's Two-Pass Algorithm (first pass)
-func FirstDFSLoop(g *Graph) (map[int]int){
+func FirstDFSLoop(g *graph.Graph) (map[int]int){
 	t := 0  // finishing time
 	explored := map[int]bool{}  				// record the explored nodes
 	finishing := map[int]int{}  				// record finishing time {finishing_time: node_id}
@@ -174,7 +87,7 @@ func GetFinishingOrder(finishing map[int]int) (res []int) {
 	return res
 }
 
-func SecondDFSLoop(g *Graph, finishing map[int]int) (sccs [][]int) {
+func SecondDFSLoop(g *graph.Graph, finishing map[int]int) (sccs [][]int) {
 	sccs = make([][]int, 0)  					// recored all scc
 	explored := map[int]bool{}  				// record the explored nodes
 	newOrder := GetFinishingOrder(finishing)

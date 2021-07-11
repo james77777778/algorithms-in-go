@@ -78,8 +78,12 @@ func (h *Heap) BubbleDown() {
 }
 
 func (h *Heap) Insert(key int) {
-	h.data = append(h.data, key)
 	h.length += 1
+	if len(h.data) < h.length {
+		h.data = append(h.data, key)
+	} else {
+		h.data[h.length - 1] = key
+	}
 	h.BubbleUp()
 }
 
