@@ -12,7 +12,7 @@ type Node struct {
 }
 
 type Edge struct {
-	u, v int
+	U, V int
 }
 
 type Graph struct {
