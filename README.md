@@ -72,3 +72,18 @@ All algorithms are Implemented in GO.
     10
     100
     ```
+
+### Dijkstra Shortest Path
+- Dijkstra Shortest Path
+    `go run cmd/dijkstra_shortest_path/dijkstra_shortest_path.go`  
+    shows the shortest-path distances from vertex 1 to every other vertex  
+    ```bash
+    vertices: 1, shortest path: 0
+    vertices: 2, shortest path: 1
+    vertices: 3, shortest path: 2
+    vertices: 4, shortest path: 3
+    vertices: 5, shortest path: 4
+    vertices: 6, shortest path: 4
+    vertices: 7, shortest path: 3
+    vertices: 8, shortest path: 2
+    ```
