@@ -8,10 +8,9 @@ All algorithms are Implemented in GO.
 
 ## Implemented Algorithms
 ### Divide and Conquer
-- Closest Pair of Points  
-    `go run cmd/closest_pair/closest_pair.go`  
-    shows  
-    `5.0990195135927845`
+`go run cmd/closest_pair/closest_pair.go`  
+shows  
+`5.0990195135927845`
 
 ### QuickSort (RandomPivot + In-place Partition)
 `go run cmd/sort/quick_sort.go`  
