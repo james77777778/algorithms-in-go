@@ -1,3 +1,12 @@
+/*
+Use two heaps to implement median maintenace.
+Input is a streaming int array. Output is all kth medians from 1 to k.
+(k is the length of the int arry)
+
+median is (k+1)/2-th / k/2-th if k is odd / even.
+MinIntArray contains all bigger numbers and Pop (Extract-Min) is the smallest of these bigger numbers.
+MaxIntArray contains all smaller numbers and Pop (Extract-Mat) is the biggest of these smaller numbers.
+*/
 package main
 
 import (
@@ -128,8 +137,7 @@ func medianSum(arr []int) int {
 	return sum(medians)
 }
 
-// This example inserts several ints into an IntHeap, checks the minimum,
-// and removes them in order of priority.
+
 func main() {
 	// read txt
 	arr := []int{}
